@@ -1,0 +1,15 @@
+data_dir: "/mnt/datasets/dpl/fungi40c"  # folder with train/, val/, test/ (full dataset on the cluster; set to your fungi_tiny folder when working locally)
+random_seed: 42
+output_dim: 40
+
+### TODO 4.2 ###
+# Replace every ❓ by a value: the number of images per batch, the (initial) learning rate, the number of training
+# epochs, the number of data loading worker processes and the validation period in epochs (1 = validate after every
+# epoch). `batch_size` and `num_workers` are PER GPU: with several GPUs train.py multiplies both by their number.
+# Use at most the CPU cores per GPU for `num_workers` (8 in train_job.sbatch and in train_job_4gpu.sbatch).
+# Start with small, safe values and tune them later, once the whole pipeline works.
+batch_size: ❓
+learning_rate: ❓
+num_epochs: ❓
+num_workers: ❓
+validate_every: ❓
