@@ -34,7 +34,7 @@ hw3-cnns/
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone git@github.com:jskvrna/DPL-HW3.git
+git clone https://github.com/jskvrna/DPL-HW3.git
 ```
 
 ### 2️⃣ Set up your environment
