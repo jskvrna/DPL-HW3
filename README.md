@@ -193,6 +193,10 @@ On top of the basic part there is a tournament: your model competes with the mod
 - **Size limit: the tournament zip must be at most 500 MB** (the same limit as for the homework, counted separately: the two submissions do not share it). Check the size of your weights before you submit; if they are too large, save them in half precision, see [Submission](#-submission).
 - The model **must not download anything** when it is created or run (there is no internet access during the evaluation): the weights of the pretrained backbone come from `weights_tournament.pth`, not from the internet.
 - Your code is run in a sandbox without internet access and without access to the labels of the private test set.
+- **📦 Packages on the evaluation server (tournament):** these packages are installed there (the versions differ slightly from your `requirements.txt`, so avoid features that exist only in the newest releases):
+  `torchvision==0.23.0`, `pillow==11.1.0`, `numpy==2.2.4`, `jinja2==3.1.6`, `pyyaml==6.0.2`, `tqdm==4.67.1`, `timm==1.0.20`, `huggingface_hub==0.34.4`, `einops==0.8.1`, `open_clip_torch`, `ftfy`, `regex`, `transformers`, `tokenizers`
+
+  If you need **any other package**, **send me an email** (jan.skvrna@cvut.cz) with the **list of packages** (with versions if it matters). I will try to install them on the evaluation server and tell you which ones are actually available. Do this **early**, not on the day of the deadline, and do not rely on a package until I confirm it.
 - **Check your files:** `python evaluate.py --tournament` tests items 9.1 and 9.2 of `model_tournament.py` (the model is built without internet and gives `[batch_size, 40]` logits, the transform works), and `python evaluate.py --tournament --data-dir <data_dir> --weights weights_tournament.pth` also prints the accuracy, macro F1, mAP and score of your tournament model on `<data_dir>/val` and the size of the weights file.
 
 ## 📦 Submission
@@ -210,6 +214,8 @@ There are **two separate submissions**, each is a **zip file** of at most **500 
 - 🏆 `weights_tournament.pth` - Its weights (state_dict)
 - 🏆 `train.py` - The training script of your tournament model (e.g. your modified copy of `train.py`)
 - 🏆 `confs/config.yml` - Its hyperparameters
+
+> 📦 **Packages (tournament):** the list of packages installed on the evaluation server (`timm`, `transformers`, `open_clip_torch`, ...) and how to ask for others is in the [tournament section](#-tournament-additional-part).
 
 The weights are saved as a plain `state_dict` in float32. If they would exceed the limit, save them in half precision, `load_state_dict` converts them back when the grader loads them:
 ```python
